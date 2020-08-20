@@ -1,7 +1,7 @@
 # django-rest-api
 django rest api
 
-# serializers
+# serializers it is in the master branch
 => for testing open django shell -- python manage.py shell
 
 from userdetails.models import Articles
