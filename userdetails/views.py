@@ -135,11 +135,9 @@ class GenericAPIView(generics.GenericAPIView, mixins.ListModelMixin,
     def delete(self, request, id):
         return self.destroy(request, id)
 
-#------VIEW SETS-----
+#------ MODEL VIEW SETS-----
 
-class ArticleViewSet(viewsets.GenericViewSet, mixins.ListModelMixin,
-                    mixins.CreateModelMixin, mixins.UpdateModelMixin,
-                    mixins.RetrieveModelMixin, mixins.DestroyModelMixin):
+class ArticleViewSet(viewsets.ModelViewSet):
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
     
