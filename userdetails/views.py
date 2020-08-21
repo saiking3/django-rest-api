@@ -15,7 +15,9 @@ from django.views.decorators.csrf import csrf_exempt
 # generic views and mixins
 from rest_framework import generics
 from rest_framework import mixins
-
+#---Authentication---
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 @api_view(['GET','POST'])
@@ -109,8 +111,9 @@ class GenericAPIView(generics.GenericAPIView, mixins.ListModelMixin,
                     mixins.RetrieveModelMixin, mixins.DestroyModelMixin):
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
-
     lookup_field = 'id'
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, id=None):
 
